@@ -2,6 +2,15 @@
   <div class="card-header">
     {{ pageTitle }}
   </div>
+  <div class="container" *ngIf="product">
+    <div><strong>Name</strong>: {{ product.productName }}</div>
+    <div>
+      <strong>Price</strong>:
+      {{ product.price | currency : "USD" : "symbol" : "1.2-2" }}
+    </div>
+    <div><strong>Description</strong>: {{ product.description }}</div>
+    <div><pm-star [rating]="product.starRating"></pm-star></div>
+  </div>
   <div class="card-footer">
     <button
       class="btn btn-outline-secondary"
