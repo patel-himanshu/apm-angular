@@ -10,7 +10,8 @@ import { ConvertToSpacesPipe } from './shared/convert-to-spaces.pipe';
 import { StarComponent } from './shared/star.component';
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 import { WelcomeComponent } from './home/welcome.component';
-import { ProductDetailGuard } from './products/product-detail/product-detail.guard';
+import { PageNotFoundComponent } from './home/page-not-found.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -20,23 +21,9 @@ import { ProductDetailGuard } from './products/product-detail/product-detail.gua
     StarComponent,
     ConvertToSpacesPipe,
     ProductDetailComponent,
+    PageNotFoundComponent,
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    RouterModule.forRoot([
-      { path: 'products', component: ProductListComponent },
-      {
-        path: 'products/:id',
-        component: ProductDetailComponent,
-        canActivate: [ProductDetailGuard],
-      },
-      { path: 'welcome', component: WelcomeComponent },
-      { path: '', redirectTo: 'welcome', pathMatch: 'full' },
-      { path: '**', redirectTo: 'welcome', pathMatch: 'full' },
-    ]),
-  ],
+  imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
